@@ -1,0 +1,65 @@
+---
+import type { GetStaticPaths } from "astro";
+import BlogLayout from "@layouts/BlogLayout.astro";
+import { getCollection } from "astro:content";
+import type { CollectionConfig } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+
+// Obtener la rutas disponibles getStaticPaths
+export const getStaticPaths = (async () => {
+  const posts = await getCollection("blog");
+
+  return posts.map((post: CollectionEntry<"blog">) => ({
+    params: {
+      slug: post.slug,
+    },
+    props: {
+      post: post,
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.props;
+const frontmatter = post.data;
+const { Content, headings } = await post.render();
+---
+
+<BlogLayout title={frontmatter.title}>
+  <p class="text-sm text-gray-500 mb-0">{frontmatter.title}</p>
+  <p class="tx-base text-gray-400 mb-0">{frontmatter.author}</p>
+
+  <Image
+    class="my-5 w-full h-[400px] object-cover rounded-md"
+    src={frontmatter.image}
+    alt={frontmatter.title}
+    width={600}
+    height={400}
+    quality="high"
+    loading="eager"
+    transition:name={`${post.slug}-image`}
+  />
+
+  <!-- Tabla de contenidos -->
+  <h3>Tabla de contenidos</h3>
+  <ol>
+    {
+      headings.map((heading, index) => (
+        <li>
+          <a href={`#${heading.slug}`}>
+            {index + 1} - {heading.text}
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+
+  <!-- Contenido -->
+  <Content />
+
+  <div class="mt-10 mb-20">
+    <a href="#btn-go-back" class="text-base hover:underline text-amber-200"
+      >Volver al inicio</a
+    >
+  </div>
+</BlogLayout>

@@ -1,0 +1,27 @@
+---
+import BlogLayout from "@layouts/BlogLayout.astro";
+import { Image } from "astro:assets";
+
+import post05Img from "@images/post-05.png";
+import Picture from "astro/components/Picture.astro";
+---
+
+<BlogLayout title="Imágenes">
+  <h1 class="text-5xl font-semibold capitalize lg:text-6xl text-white"></h1>
+  <!-- <img src="/assets/images/post-05.png" alt="" /> -->
+    <h1 class="text-5xl font-semibold capitalize lg:text-6xl text-white">Componente Image</h1>
+  <Image
+    src={post05Img}
+    quality="high"
+    width="250"
+    height="250"
+    alt="Imagen del post"
+  />
+  <h1 class="text-5xl font-semibold capitalize lg:text-6xl text-white">Componente Picture</h1>
+  <Picture
+    src={post05Img}
+    alt="Imagen del post"
+    widths={[240, 540, 720, post05Img.width]}
+    sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${post05Img.width}px`}
+    />
+</BlogLayout>

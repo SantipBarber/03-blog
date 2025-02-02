@@ -1,0 +1,48 @@
+html {
+    background-color: rgb(17 24 39);
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    scroll-behavior: smooth;
+}
+  
+body {
+    margin-top: 2.5rem;
+}
+
+h1 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    color: white;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+  
+h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    color: rgb(59 130 246);
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+  
+h3 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    color: white;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+  
+p {
+    color: white;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+  
+a {
+    color: rgb(59 130 246);
+}
+
+a:hover {
+    text-decoration: underline;
+}
