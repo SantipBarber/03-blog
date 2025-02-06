@@ -1,0 +1,18 @@
+---
+import AuthorCard from "@components/AuthorCard.astro";
+import Layout from "@layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const authors = await getCollection("author");
+---
+
+<Layout title="Autores">
+  <div class="py-3 mx-auto">
+    <h1 class="text-3xl font-semibold capitalize lg:text-4xl text-white">
+      SpBarber's Blog - Autores
+    </h1>
+  </div>
+  <section class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-10">
+    {authors.map((author) => <AuthorCard author={author} />)}
+  </section>
+</Layout>

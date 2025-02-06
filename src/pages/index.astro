@@ -5,17 +5,24 @@ import { getCollection } from "astro:content";
 import "../styles/global.css";
 import TypedBlogPost from "@components/TypedBlogPost.astro";
 
-const posts = await getCollection("blog");
+const posts = await getCollection(
+  "blog",
+  (post) => post.data.isDraft === false
+);
 ---
 
 <Layout title="SpBarber's Blog">
-  <section class="bg-gray-900">
-    <div class="container px-6 py-10 mx-auto">
-      <h1 class="text-3xl font-semibold capitalize lg:text-4xl text-white mb-5">
+  <section class="bg-gray-900 px-6">
+    <div class="container pt-10 pb-2 mx-auto">
+      <h1 class="text-3xl font-semibold capitalize lg:text-4xl text-white">
         {siteConfig.title}
       </h1>
     </div>
-    <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
+    <div class="flex flex-col">
+      <a href="/blog/1" class="text-blue-500">Blog paginado</a>
+      <a href="/authors" class="text-amber-100">Autores</a>
+    </div>
+    <div class="grid grid-cols-1 gap-8 mt-2 md:mt-5 md:grid-cols-2">
       {posts.map((post) => <TypedBlogPost post={post} />)}
     </div>
   </section>
