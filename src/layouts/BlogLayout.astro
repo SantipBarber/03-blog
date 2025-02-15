@@ -6,13 +6,20 @@ import "../styles/blog.css";
 const { title } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="SpBarber's Blog RSS Feed"
+      href={new URL("rss.xml", Astro.site)}
+    />
     <title>{title}</title>
+
     <ClientRouter />
   </head>
   <body class="bg-gray-900">
