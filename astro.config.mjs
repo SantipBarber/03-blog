@@ -11,5 +11,5 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
   integrations: [mdx()],
-  site: 'https://spbarber.com'
+  site: 'https://spbarber-astro-blog.netlify.app'
 });
