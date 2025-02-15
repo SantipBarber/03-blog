@@ -10,6 +10,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-
-  integrations: [mdx()]
+  integrations: [mdx()],
+  site: 'https://spbarber.com'
 });
